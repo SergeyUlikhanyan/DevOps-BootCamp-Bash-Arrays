@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chmod +x ./array.sh
 count=1
 max=32
 
