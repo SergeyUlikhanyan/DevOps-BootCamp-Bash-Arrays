@@ -1,22 +1,36 @@
 #!/bin/bash
 
-chmod 777 ./array.sh
-count=1
-max=32
+arg=$1
+declare -a arr
+declare -a res
+count=0
 
 for i in {a..z}; do
-        if [ $count -le $1 ] && [ $1 -le $max ]
-                then
-                mkdir folder_$i
-                ((count++))
-        fi
+        arr+=($i)
 done
 
-last=$(($count - 1))
+for (( i=0; i < $arg; i++ )); do
 
-if [[ $count -gt 1 ]]
-        then
-                echo "$last folders created: $(ls -d folder_* | grep -v / | xargs echo | sed 's/ /, /g')";
-        else
-                echo "Error"
+        if [ $i -eq 26 ]; then
+                break
+        fi
+
+        if [ -d folder_${arr[$i]} ]; then
+                res+=(folder_${arr[$i]})
+                continue
+        fi
+
+        mkdir  folder_${arr[$i]}
+        res+=(folder_${arr[$i]})
+
+        count=$((count+1))
+
+done
+
+result="${res[*]}"
+if [ $count -le 1 ]; then
+        echo "$count folder created: ${result//${IFS:0:1}/, }"
+else
+        echo "$count folders created: ${result//${IFS:0:1}/, }"
+
 fi
