@@ -1,7 +1,7 @@
 #!/bin/bash
 
 count=1
-max=26
+max=32
 
 for i in {a..z}; do
         if [ $count -le $1 ] && [ $1 -le $max ]
