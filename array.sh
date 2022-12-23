@@ -1,7 +1,7 @@
 #!/bin/bash
-count=1
-for i in {a..z}; do
-    [[ $count -gt $1 ]] && break
-    mkdir folder_$i
-    ((count++))
+arr=( {a..z} )
+for (( i = 0 ; i < $1 ; i++ )); do
+   mkdir folder_${arr[i]}
 done
+
+echo  "$1" folder created: && ls | grep folder
