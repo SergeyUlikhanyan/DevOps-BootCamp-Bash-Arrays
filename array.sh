@@ -6,22 +6,22 @@ declare -a res
 count=0
 
 for i in {a..z}; do
-        arr+=($i)
+        arr+=("$i")
 done
 
-for (( i=0; i < $arg; i++ )); do
+for (( i=0; i < arg; i++ )); do
 
-        if [ $i -eq 26 ]; then
+        if [ "$i" -eq 26 ]; then
                 break
         fi
 
-        if [ -d folder_${arr[$i]} ]; then
-                res+=(folder_${arr[$i]})
+        if [ -d folder_"${arr[$i]}" ]; then
+                res+=(folder_"${arr[$i]}")
                 continue
         fi
 
-        mkdir  folder_${arr[$i]}
-        res+=(folder_${arr[$i]})
+        mkdir  folder_"${arr[$i]}"
+        res+=(folder_"${arr[$i]}")
 
         count=$((count+1))
 
