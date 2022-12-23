@@ -5,4 +5,4 @@ for i in {a..z}; do
     mkdir folder_$i
     ((count++))
 done
-echo "$1" folder created: && ls | grep folder
+echo "$1" folders created: && ls | grep folder
