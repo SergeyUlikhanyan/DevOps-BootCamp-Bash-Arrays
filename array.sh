@@ -1,15 +1,21 @@
 #!/bin/bash
 
-array=(a b c d e f g h i j k l m n o p q r s t u v w x y z)
-output="$1 folders created:"
+count=1
+max=26
 
-for ((i=0;i<$1;i++)); do
-	mkdir $PWD/folder_${array[i]}
-	output="$output folder_${array[i]},"
+for i in {a..z}; do
+        if [ $count -le $1 ] && [ $1 -le $max ]
+                then
+                mkdir folder_$i
+                ((count++))
+        fi
 done
-if [[ $1 -eq 1 ]]; then
-	output=${output/folders/folder}
-	echo "${output/%,/}"
-else
-	echo "${output/%,/}"
+
+last=$(($count - 1))
+
+if [[ $count -gt 1 ]]
+        then
+                echo "$last folders created: $(ls -d folder_* | grep -v / | xargs echo | sed 's/ /, /g')";
+        else
+                echo "Error"
 fi
