@@ -1,7 +1,14 @@
 #!/bin/bash
-arr=( {a..z} )
-for (( i = 0 ; i < $1 ; i++ )); do
-   mkdir folder_${arr[i]}
-done
 
-echo  "$1" folder created: && ls | grep folder
+chmod +x ./array.sh
+count=$1
+
+read -ra array <<< "$(echo {a..z})"
+
+for ((l=0;l<=count-1;l++))
+
+do
+
+mkdir ./folder_"${array[$l]}"
+
+done
